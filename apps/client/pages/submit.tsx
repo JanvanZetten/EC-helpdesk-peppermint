@@ -5,6 +5,8 @@
 // Send Email to customer with ticket creation
 // Send Email to Engineers with ticket creation if email notifications are turned on
 
+// TODO Could be nice if photos can be uploaded too.
+
 import { toast } from "@/shadcn/hooks/use-toast";
 import { Listbox, Transition } from "@headlessui/react";
 import {
@@ -15,20 +17,12 @@ import {
 import { useRouter } from "next/compat/router";
 import { Fragment, useState } from "react";
 
-const type = [
-  { id: 5, name: "Incident" },
-  { id: 1, name: "Service" },
-  { id: 2, name: "Feature" },
-  { id: 3, name: "Bug" },
-  { id: 4, name: "Maintenance" },
-  { id: 6, name: "Access" },
-  { id: 8, name: "Feedback" },
-];
-
+// TODO Create enum or likewise for priorities. They are hardcoded many places in the code.
 const pri = [
-  { id: 7, name: "Low" },
-  { id: 8, name: "Medium" },
-  { id: 9, name: "High" },
+  { id: 7, name: "By tomorrow" },
+  { id: 8, name: "Within a week" },
+  { id: 9, name: "Next week" },
+  { id: 10, name: "Other" },
 ];
 
 export default function ClientTicketNew() {
@@ -41,12 +35,11 @@ export default function ClientTicketNew() {
   const [view, setView] = useState("new");
   const [ticketID, setTicketID] = useState("");
 
-  const [selected, setSelected] = useState(type[2]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
   const [description, setDescription] = useState("");
-  const [priority, setPriority] = useState(pri[0]);
+  const [priority, setPriority] = useState(pri[1]);
 
   async function submitTicket() {
     setIsLoading(true);
@@ -62,7 +55,7 @@ export default function ClientTicketNew() {
         email,
         detail: description,
         priority: priority.name,
-        type: selected.name,
+        type: undefined, // TODO can this be undefined, we don't need it so maybe delete it alltogether?
       }),
     })
       .then((res) => res.json())
@@ -100,16 +93,16 @@ export default function ClientTicketNew() {
           <div className="my-4 flex flex-col space-y-4">
             <div>
               <label
-                htmlFor="email"
+                htmlFor="name"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Name
               </label>
               <div className="mt-2">
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
+                  type="text"
+                  name="name"
+                  id="name"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                   placeholder="John Doe"
                   onChange={(e) => setName(e.target.value)}
@@ -140,16 +133,16 @@ export default function ClientTicketNew() {
             </div>
             <div>
               <label
-                htmlFor="email"
+                htmlFor="subject"
                 className="block text-sm font-medium leading-6 text-gray-900"
               >
                 Subject
               </label>
               <div className="mt-2">
                 <input
-                  type="email"
-                  name="email"
-                  id="email"
+                  type="text"
+                  name="subject"
+                  id="subject"
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-green-600 sm:text-sm sm:leading-6"
                   placeholder="I can't login to my account"
                   onChange={(e) => setSubject(e.target.value)}
@@ -157,79 +150,6 @@ export default function ClientTicketNew() {
                 />
               </div>
             </div>
-
-            <Listbox value={selected} onChange={setSelected}>
-              {({ open }) => (
-                <>
-                  <Listbox.Label className="block text-sm font-medium leading-6 text-gray-900">
-                    Issue Type
-                  </Listbox.Label>
-                  <div className="relative mt-2">
-                    <Listbox.Button className="relative w-full cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none sm:text-sm sm:leading-6">
-                      <span className="block truncate">{selected.name}</span>
-                      <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-                        <ChevronUpDownIcon
-                          className="h-5 w-5 text-gray-400"
-                          aria-hidden="true"
-                        />
-                      </span>
-                    </Listbox.Button>
-
-                    <Transition
-                      show={open}
-                      as={Fragment}
-                      leave="transition ease-in duration-100"
-                      leaveFrom="opacity-100"
-                      leaveTo="opacity-0"
-                    >
-                      <Listbox.Options className="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                        {type.map((person) => (
-                          <Listbox.Option
-                            key={person.id}
-                            className={({ active }) =>
-                              classNames(
-                                active
-                                  ? "bg-gray-400 text-white"
-                                  : "text-gray-900",
-                                "relative cursor-default select-none py-2 pl-3 pr-9"
-                              )
-                            }
-                            value={person}
-                          >
-                            {({ selected, active }) => (
-                              <>
-                                <span
-                                  className={classNames(
-                                    selected ? "font-semibold" : "font-normal",
-                                    "block truncate"
-                                  )}
-                                >
-                                  {person.name}
-                                </span>
-
-                                {selected ? (
-                                  <span
-                                    className={classNames(
-                                      active ? "text-white" : "text-indigo-600",
-                                      "absolute inset-y-0 right-0 flex items-center pr-4"
-                                    )}
-                                  >
-                                    <CheckIcon
-                                      className="h-5 w-5"
-                                      aria-hidden="true"
-                                    />
-                                  </span>
-                                ) : null}
-                              </>
-                            )}
-                          </Listbox.Option>
-                        ))}
-                      </Listbox.Options>
-                    </Transition>
-                  </div>
-                </>
-              )}
-            </Listbox>
 
             <Listbox value={priority} onChange={setPriority}>
               {({ open }) => (
