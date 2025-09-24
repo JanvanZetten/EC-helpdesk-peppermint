@@ -19,7 +19,7 @@ import {
 } from "@/shadcn/ui/select";
 import { ExclamationTriangleIcon } from "@heroicons/react/20/solid";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useEffect, useState } from "react";
 
 export default function Notifications() {

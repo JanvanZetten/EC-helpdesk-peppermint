@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from "react";
 import { Dialog, Transition, Listbox } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/24/outline";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/20/solid";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

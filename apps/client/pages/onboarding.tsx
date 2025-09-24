@@ -1,4 +1,4 @@
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 
 import { getCookie } from "cookies-next";
 import Link from "next/link";

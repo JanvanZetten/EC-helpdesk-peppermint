@@ -1,7 +1,7 @@
 import { Button } from "@radix-ui/themes";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 
 import { AccountDropdown } from "../components/AccountDropdown";
 
@@ -15,6 +15,7 @@ import { useUser } from "../store/session";
 
 export default function ShadLayout({ children }: any) {
   const location = useRouter();
+  const pathname = usePathname();
 
   const { loading, user, fetchUserProfile } = useUser();
 
@@ -25,7 +26,7 @@ export default function ShadLayout({ children }: any) {
     location.push("/auth/login");
   }
 
-  if (location.pathname.includes("/admin") && user.isAdmin === false) {
+  if (pathname.includes("/admin") && user.isAdmin === false) {
     location.push("/");
     alert("You do not have the correct perms for that action.");
   }

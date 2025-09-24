@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function UpdateClientModal({ client }) {
   const [open, setOpen] = useState(false);

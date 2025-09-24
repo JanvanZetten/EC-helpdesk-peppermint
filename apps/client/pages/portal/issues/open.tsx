@@ -1,5 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import Loader from "react-spinners/ClipLoader";
 
 import { getCookie } from "cookies-next";

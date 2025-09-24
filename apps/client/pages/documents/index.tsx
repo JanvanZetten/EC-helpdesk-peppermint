@@ -10,7 +10,7 @@ import {
 } from "@/shadcn/ui/select";
 import { getCookie } from "cookies-next";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useState } from "react";
 import { useQuery } from "react-query";
 

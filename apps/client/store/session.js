@@ -1,6 +1,6 @@
 // UserContext.js
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import posthog from "posthog-js";
 import { PostHogProvider } from "posthog-js/react";
 import { createContext, useContext, useEffect, useState } from "react";

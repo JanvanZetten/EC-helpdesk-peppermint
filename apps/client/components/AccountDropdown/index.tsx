@@ -31,7 +31,7 @@ import {
   DropdownMenuTrigger,
 } from "@/shadcn/ui/dropdown-menu";
 import { useUser } from "../../store/session";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { deleteCookie, getCookie } from "cookies-next";
 
 export function AccountDropdown() {

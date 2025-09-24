@@ -7,7 +7,7 @@ import {
   // SelectorIcon,
   UserPlusIcon,
 } from "@heroicons/react/20/solid";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");

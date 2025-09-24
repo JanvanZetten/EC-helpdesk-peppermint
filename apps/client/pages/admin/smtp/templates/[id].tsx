@@ -1,6 +1,6 @@
 import { toast } from "@/shadcn/hooks/use-toast";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { highlight, languages } from "prismjs";
 import "prismjs/components/prism-clike";
 import "prismjs/themes/prism.css";

@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/shadcn/ui/card";
 import { Input } from "@/shadcn/ui/input";
 import { getCookie } from "cookies-next";
 import { Search } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useEffect, useState } from "react";
 
 export default function Roles() {

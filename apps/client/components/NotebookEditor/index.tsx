@@ -11,7 +11,7 @@ import { BlockNoteView } from "@blocknote/mantine";
 import { getCookie } from "cookies-next";
 import { Ellipsis } from "lucide-react";
 import moment from "moment";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import { useDebounce } from "use-debounce";
 import { useUser } from "../../store/session";

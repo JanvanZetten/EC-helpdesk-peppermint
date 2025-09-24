@@ -5,7 +5,7 @@ import { getCookie } from "cookies-next";
 import moment from "moment";
 import Link from "next/link";
 import { useQuery } from "react-query";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 
 async function getUserTickets(token: any) {
   const res = await fetch(`/api/v1/tickets/user/external`, {

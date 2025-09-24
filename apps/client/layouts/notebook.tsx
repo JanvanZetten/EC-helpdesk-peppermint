@@ -1,7 +1,7 @@
 import { PlusIcon as PlusIconMini } from "@heroicons/react/20/solid";
 import { getCookie } from "cookies-next";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Loader from "react-spinners/ClipLoader";

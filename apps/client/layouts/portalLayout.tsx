@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { deleteCookie, getCookie } from "cookies-next";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter, usePathname } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 
 import useTranslation from "next-translate/useTranslation";
@@ -20,7 +20,8 @@ function classNames(...classes) {
 }
 
 export default function PortalLayout({ children }: any) {
-  const location = useRouter();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const { loading, user, fetchUserProfile } = useUser();
   const locale = user ? user.language : "en";
@@ -30,11 +31,11 @@ export default function PortalLayout({ children }: any) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (!user) {
-    location.push("/auth/login");
+    router.push("/auth/login");
   }
 
-  if (location.pathname.includes("/admin") && user.isAdmin === false) {
-    location.push("/");
+  if (pathname.includes("/admin") && user.isAdmin === false) {
+    router.push("/");
     alert("You do not have the correct perms for that action.");
   }
 
@@ -43,14 +44,14 @@ export default function PortalLayout({ children }: any) {
       name: t("create_ticket"),
       href: `/${locale}/portal/new`,
       icon: PlusIcon,
-      current: location.pathname === "/new" ? true : false,
+      current: pathname === "/new" ? true : false,
       initial: "c",
     },
     {
       name: t("sl_dashboard"),
       href: `/${locale}/portal`,
       icon: HomeIcon,
-      current: location.pathname === "/" ? true : false,
+      current: router.pathname === "/" ? true : false,
       initial: "h",
     },
   ];
@@ -66,12 +67,12 @@ export default function PortalLayout({ children }: any) {
 
     if (res.success) {
       deleteCookie("session");
-      location.reload();
+      router.reload();
     }
   }
 
   function handleKeyPress(event: any) {
-    const pathname = location.pathname;
+    const pathname = router.pathname;
     console.log(pathname);
     if (
       document.activeElement!.tagName !== "INPUT" &&
@@ -81,19 +82,19 @@ export default function PortalLayout({ children }: any) {
     ) {
       switch (event.key) {
         case "c":
-          location.push("/portal/new");
+          router.push("/portal/new");
           break;
         case "h":
-          location.push("/portal/");
+          router.push("/portal/");
           break;
         case "t":
-          location.push("/portal/issues");
+          router.push("/portal/issues");
           break;
         case "o":
-          location.push("/portal/issues/open");
+          router.push("/portal/issues/open");
           break;
         case "f":
-          location.push("/portal/issues/closed");
+          router.push("/portal/issues/closed");
           break;
         default:
           break;
@@ -109,7 +110,7 @@ export default function PortalLayout({ children }: any) {
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [handleKeyPress, location]);
+  }, [handleKeyPress, router]);
 
   return (
     !loading && (
@@ -275,7 +276,7 @@ export default function PortalLayout({ children }: any) {
                         <Link
                           href="/portal/issues"
                           className={classNames(
-                            location.pathname === "/portal/issues"
+                            router.pathname === "/portal/issues"
                               ? "bg-[#F0F3F9] dark:bg-gray-800 dark:text-green-600"
                               : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
                             "group -mx-2 flex gap-x-3 p-1 text-xs font-semibold leading-6"
@@ -294,7 +295,7 @@ export default function PortalLayout({ children }: any) {
                         <Link
                           href="/portal/issues/open"
                           className={classNames(
-                            location.pathname === "/portal/issues/open"
+                            router.pathname === "/portal/issues/open"
                               ? "bg-[#F0F3F9] dark:bg-gray-800 dark:text-green-600"
                               : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
                             "group -mx-2 flex gap-x-3 p-1 mll-2 text-xs font-semibold leading-6"
@@ -315,7 +316,7 @@ export default function PortalLayout({ children }: any) {
                         <Link
                           href="/portal/issues/closed"
                           className={classNames(
-                            location.pathname === "/portal/issues/closed"
+                            router.pathname === "/portal/issues/closed"
                               ? "bg-[#F0F3F9] dark:bg-gray-800 dark:text-green-600"
                               : " hover:bg-[#F0F3F9] dark:hover:bg-white dark:hover:text-gray-900 ",
                             "group -mx-2 flex gap-x-3 p-1 text-xs font-semibold leading-6"

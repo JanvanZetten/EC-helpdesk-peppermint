@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import seoConfig from './seo.config.js'
 
 const config = {
@@ -21,9 +21,9 @@ const config = {
   chat: {
     link: 'https://discord.gg/X9yFbcV2rF',
   },
-  // i18n: [
-  //   { locale: 'en', text: 'English' },
-  // ],
+  i18n: [
+    { locale: 'en', text: 'English' },
+  ],
   footer: {
     text: '',
     component: () => <></>

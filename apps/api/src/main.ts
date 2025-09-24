@@ -18,13 +18,13 @@ const logFilePath = "./logs.log"; // Update this path to a writable location
 const logStream = fs.createWriteStream(logFilePath, { flags: "a" });
 
 // Initialize Fastify with logger
-const server: FastifyInstance = Fastify({
+const server = Fastify({
   logger: {
     stream: logStream, // Use the writable stream
   },
   disableRequestLogging: true,
   trustProxy: true,
-});
+}) as any;
 server.register(cors, {
   origin: "*",
 
@@ -49,7 +49,7 @@ server.get("/", {
       }
     }
   }
-}, async function (request, response) {
+}, async function (request: any, response: { send: (arg0: { healthy: boolean; }) => void; }) {
   response.send({ healthy: true });
 });
 
@@ -110,7 +110,7 @@ const start = async () => {
 
     server.listen(
       { port: Number(port), host: "0.0.0.0" },
-      async (err, address) => {
+      async (err: any, address: any) => {
         if (err) {
           console.error(err);
           process.exit(1);

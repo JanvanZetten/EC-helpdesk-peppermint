@@ -3,7 +3,7 @@ import { SidebarProvider } from "@/shadcn/ui/sidebar";
 import { Bell, Flag, KeyRound } from "lucide-react";
 import useTranslation from "next-translate/useTranslation";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Settings({ children }) {
   const router = useRouter();

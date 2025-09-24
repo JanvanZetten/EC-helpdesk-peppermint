@@ -21,7 +21,7 @@ import {
 } from "@/shadcn/ui/card";
 import { getCookie } from "cookies-next";
 import { BellRing, Check } from "lucide-react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useEffect, useState } from "react";
 
 export default function Authentication() {

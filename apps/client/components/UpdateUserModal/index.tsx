@@ -2,7 +2,7 @@ import { toast } from "@/shadcn/hooks/use-toast";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Fragment, useState } from "react";
 
 export default function UpdateUserModal({ user }) {

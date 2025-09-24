@@ -1,5 +1,5 @@
 import { toast } from "@/shadcn/hooks/use-toast";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useState } from "react";
 
 export default function Login({}) {

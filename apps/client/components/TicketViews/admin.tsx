@@ -1,6 +1,6 @@
 import { getCookie } from "cookies-next";
 import moment from "moment";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import React, { useMemo } from "react";
 import { useQuery } from "react-query";
 import {

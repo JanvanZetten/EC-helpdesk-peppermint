@@ -1,7 +1,7 @@
 import { Switch } from "@headlessui/react";
 import { Flex } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useState } from "react";
 import { useUser } from "../../../../store/session";
 import { toast } from "@/shadcn/hooks/use-toast";

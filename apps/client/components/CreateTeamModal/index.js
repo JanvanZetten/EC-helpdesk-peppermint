@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/outline";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function CreateUser() {
   const [open, setOpen] = useState(false);

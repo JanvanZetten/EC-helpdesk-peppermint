@@ -1,5 +1,5 @@
 import { setCookie } from "cookies-next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useEffect } from "react";
 
 export default function Login() {

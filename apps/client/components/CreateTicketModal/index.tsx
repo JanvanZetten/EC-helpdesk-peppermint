@@ -3,7 +3,7 @@ import { CheckIcon } from "@heroicons/react/20/solid";
 import { ChevronUpDownIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { getCookie } from "cookies-next";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useState } from "react";
 import { useUser } from "../../store/session";
 

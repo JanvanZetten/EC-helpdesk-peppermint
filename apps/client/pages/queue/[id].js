@@ -8,7 +8,7 @@ import {
 } from "react-table";
 import Link from "next/link";
 import Loader from "react-spinners/ClipLoader";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 
 // import MarkdownPreview from "../MarkdownPreview";
 import TicketsMobileList from "../../components/TicketsMobileList";

@@ -11,7 +11,7 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from "@/shadcn/ui/sidebar";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export function NavMain({
   items,

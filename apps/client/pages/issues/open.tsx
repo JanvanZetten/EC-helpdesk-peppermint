@@ -1,5 +1,5 @@
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useEffect, useMemo, useState } from "react";
 import Loader from "react-spinners/ClipLoader";
 

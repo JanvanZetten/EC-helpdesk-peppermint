@@ -8,7 +8,7 @@ import {
   LockOpenIcon,
 } from "@heroicons/react/20/solid";
 import moment from "moment";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { Fragment, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 

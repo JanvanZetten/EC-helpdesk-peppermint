@@ -12,7 +12,7 @@ import {
   CheckIcon,
   ChevronUpDownIcon,
 } from "@heroicons/react/20/solid";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { Fragment, useState } from "react";
 
 const type = [

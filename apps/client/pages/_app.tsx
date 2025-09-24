@@ -13,7 +13,7 @@ import {
 
 import { MantineProvider } from "@mantine/core";
 import { Theme } from "@radix-ui/themes";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import { SessionProvider, useUser } from "../store/session";

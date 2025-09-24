@@ -2,7 +2,7 @@ import { useState, useEffect, Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { CheckIcon, ChevronUpDownIcon } from "@heroicons/react/20/solid";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/compat/router";
 import { useUser } from "../store/session";
 import { getCookie } from "cookies-next";
 import { toast } from "@/shadcn/hooks/use-toast";

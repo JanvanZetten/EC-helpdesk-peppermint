@@ -23,7 +23,7 @@ import { Text, Tooltip } from "@radix-ui/themes";
 import { getCookie } from "cookies-next";
 import moment from "moment";
 import useTranslation from "next-translate/useTranslation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import Frame from "react-frame-component";
 import { useQuery } from "react-query";
